@@ -1,7 +1,7 @@
-redux-generator
+redux-iterators
 ==============
 
-Get better composition out of your action creators.
+Get better composition out of your action creators with iterators.
 
 ```javascript
 // composedActionCreator.js

@@ -1,5 +1,5 @@
 {
-  "name": "@aabenoja/redux-generator",
+  "name": "@aabenoja/redux-iterators",
   "version": "0.1.0",
   "description": "Redux middleware for iterator actions",
   "main": "lib/index.js",
