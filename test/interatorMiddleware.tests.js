@@ -1,9 +1,9 @@
 import { should } from 'chai';
-import middleware from '../src';
+import iterator from '../src';
 
 should();
 
-function * creator() {
+function* simpleCreator() {
   yield { type: 'foo', payload: 'baz' };
   yield { type: 'bar', payload: 'meh' };
 }
@@ -15,7 +15,7 @@ describe('iterator middleware', () => {
     const next = ({ type, payload }) => {
       store[type] = payload
     };
-    middleware(null)(next)(action);
+    iterator(null)(next)(action);
   }
 
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe('iterator middleware', () => {
   });
 
   it('handles iterators as actions', () => {
-    const action = creator();
+    const action = simpleCreator();
     dispatch(action);
     store.foo.should.equal('baz');
     store.bar.should.equal('meh');
