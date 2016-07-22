@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aabenoja/redux-iterators.svg?branch=master)](https://travis-ci.org/aabenoja/redux-iterators)
+
 redux-iterators
 ==============
 
