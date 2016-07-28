@@ -6,7 +6,7 @@ import iterator from '../src';
 
 should();
 
-const createMockStore = configureMockStore([ iterator, promise, thunk ]);
+const createMockStore = configureMockStore([ promise, thunk, iterator ]);
 
 function* complexCreator() {
   yield { type: 'foo', payload: 'bar' };

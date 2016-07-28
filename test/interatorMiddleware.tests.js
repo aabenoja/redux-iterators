@@ -1,4 +1,5 @@
 import { should } from 'chai';
+import configureMockStore from 'redux-mock-store';
 import iterator from '../src';
 
 should();
@@ -10,27 +11,31 @@ function* simpleCreator() {
 
 describe('iterator middleware', () => {
   let store;
+  let nextCalled;
+  let dispatchCalled;
 
-  function dispatch(action) {
-    const next = ({ type, payload }) => {
-      store[type] = payload
-    };
-    iterator(null)(next)(action);
+  function dispatch(testAction) {
+    const next = () => { nextCalled = true; };
+    iterator(store)(next)(testAction);
   }
 
   beforeEach(() => {
-    store = {};
-  }); 
-  
-  it('handles normal flux actions normally', () => {
-    dispatch({ type: 'foo', payload: 'bar' });
-    store.foo.should.equal('bar');
+    nextCalled = false;
+    dispatchCalled = false;
+    store = {
+      dispatch() {
+        dispatchCalled = true;
+      }
+    };
   });
 
-  it('handles iterators as actions', () => {
-    const action = simpleCreator();
-    dispatch(action);
-    store.foo.should.equal('baz');
-    store.bar.should.equal('meh');
+  it('sends flux standard actions to next middleware', () => {
+    dispatch({ type: 'foo', payload: 'bar' });
+    nextCalled.should.be.true;
+  });
+
+  it('dispatches actions from iterator from the top', () => {
+    dispatch(function* () { yield { type: 'foo', payload: 'bar' }; }())
+    dispatchCalled.should.be.true;
   });
 });

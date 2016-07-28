@@ -35,11 +35,3 @@ const store = createStore(
 // component
 dispatch(composedActionCreator());
 ```
-
-Caveat
-=====
-
-If the action is not an iterator it is passed on the next middleware. However,
-this also means that passing the iterator to other middleware could result in
-an error being thrown, since an iterator is not a flux standard action. Please
-be sure to list `redux-iterator` first in your middleware list.
