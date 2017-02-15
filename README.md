@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/aabenoja/redux-iterators.svg?branch=master)](https://travis-ci.org/aabenoja/redux-iterators)
+[![dependencies Status](https://david-dm.org/aabenoja/redux-iterators/status.svg)](https://david-dm.org/aabenoja/redux-iterators)
+[![devDependencies Status](https://david-dm.org/aabenoja/redux-iterators/dev-status.svg)](https://david-dm.org/aabenoja/redux-iterators?type=dev)
 
 redux-iterators
 ==============
